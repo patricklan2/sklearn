@@ -1,0 +1,105 @@
+% 导言区
+\documentclass{ctexart}
+
+\usepackage{ctex}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multirow} % for cmd 'multirow', 'multicolumn'
+
+\newcommand{\ttt}{\textbackslash}
+
+% Bold shortcuts
+\newcommand{\bb}[1]{\mathbf{#1}} %\mathbf, \boldsymbol斜粗体
+% - lowercase
+\newcommand{\bma}{\bb{a}}
+\newcommand{\bmb}{\bb{b}}
+\newcommand{\bmc}{\bb{c}}
+\newcommand{\bmd}{\bb{d}}
+\newcommand{\bmf}{\bb{f}}
+\newcommand{\bmg}{\bb{g}}
+\newcommand{\bmh}{\bb{h}}
+\newcommand{\bmr}{\bb{r}}
+\newcommand{\bms}{\bb{s}}
+\newcommand{\bmt}{\bb{t}}
+\newcommand{\bmu}{\bb{u}}
+\newcommand{\bmn}{\bb{n}}
+\newcommand{\bmv}{\bb{v}}
+\newcommand{\bmw}{\bb{w}}
+\newcommand{\bmx}{\bb{x}}
+\newcommand{\bmy}{\bb{y}}
+\newcommand{\bmz}{\bb{z}}
+
+% - uppercase
+\newcommand{\bmA}{\bb{A}}
+\newcommand{\bmB}{\bb{B}}
+\newcommand{\bmC}{\bb{C}}
+\newcommand{\bmD}{\bb{D}}
+\newcommand{\bmF}{\bb{F}}
+\newcommand{\bmG}{\bb{G}}
+\newcommand{\bmH}{\bb{H}}
+\newcommand{\bmW}{\bb{W}}
+\newcommand{\bmX}{\bb{X}}
+\newcommand{\bmY}{\bb{Y}}
+
+\newcommand{\data}{\bmX}
+\newcommand{\labels}{\bmy}
+\newcommand{\alphas}{\bb{\aleph}}
+\newcommand{\wights}{\bmw}
+\newcommand{\Wights}{\bmW}
+\newcommand{\predict}{\bmg(\data)}
+\newcommand{\errors}{\bmE}
+\newcommand{\bios}{\bmb}
+\newcommand{\sqrtloss}[2]{||#1 - #2||^2_2}
+\newcommand{\predictfunction}{预测函数}
+\newcommand{\lossfunction}{损失函数}
+\newcommand{\getmin}[2]{\min_{#1}{#2}}
+\newcommand{\Partial}[2]{\frac{\partial #1}{\partial #2}}
+
+%Linear
+\newcommand{\hX}{\hat{\data}}
+\newcommand{\hw}{\hat{\wights}}
+\newcommand{\sigmod}[1]{\frac{1}{1 + \exp^{-#1}}}
+
+% 正文区
+\begin{document}
+
+\section{DecisionTree}
+通过找到最合适的point去把数据分为两个子数据
+
+属性类集$ \bmC $,第i个属性 $ \bmC_i \in \bmC $,第i个属性取值为j,记作 $\bmC_i = j$
+
+离散属性先转为多列的0和1 看做多个连续属性
+
+\subsection{Classifier}
+
+数据$\bmD$, 标签集$S$
+遍历所有的point
+
+数据集被point分为两份$\bmA$和$\bmB$,得到占比$P(\bmA \mid \bmD)$,$P(\bmB \mid \bmD)$
+得到占比
+\begin{center}
+    \begin{tabular}{|c|c|}
+        \hline
+        A & $P_A = [P(S = S_1 \mid \bmA),P(S = S_2 \mid \bmA) \dots P(S = S_n \mid \bmA)]$ \\ \hline
+        B & $P_B = [P(S = S_1 \mid \bmB),P(S = S_2 \mid \bmB) \dots P(S = S_n \mid \bmB)]$ \\ \hline
+    \end{tabular}
+\end{center}
+
+得到信息熵
+$$
+En_{poitn} = P(\bmA \mid \bmD) P_A^\top \log_2(P_A) + P(\bmB \mid \bmD) P_B^\top \log_2(P_B)
+$$
+
+找出信息熵最小即使最佳的point
+
+\subsection{Regression}
+标签值$S$
+数据集被point分为两份$\bmA$和$\bmB$,$S_\bmA$ $S_\bmB$
+
+计算$S_\bmA$ $S_\bmB$平方误差。再相加得$E_{point}$
+
+取$E_{point}$最小时的point
+
+\end{document}

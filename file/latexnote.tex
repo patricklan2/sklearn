@@ -1,0 +1,82 @@
+% 导言区
+\documentclass{ctexart}
+
+\usepackage{ctex}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multirow} % for cmd 'multirow', 'multicolumn'
+
+\newcommand{\ttt}{\textbackslash}
+
+\newenvironment{centertabular}[1]
+    {
+    \begin{center}
+    \begin{tabular}{#1}
+    }
+    {
+    \end{tabular} 
+    \end{center}
+    }
+
+% 正文区
+\begin{document}
+\section{文本模式}
+\subsection{表格}
+\begin{centertabular}{|c|c|}
+    \hline
+    表格环境 & \ttt begin\{tabular\} \\ \hline
+    居左，居中，居右 & \ttt begin\{tabular\}(l,c,r) \\ \hline
+    竖线 & \ttt begin\{tabular\}(l|c|r) \\ \hline
+    横线 & \ttt hline \\ \hline
+\end{centertabular}
+合并的说明\\
+表格与矩阵的使用方法一至
+\begin{centertabular}{|c|c|}
+    \hline
+    需要的包 & \ttt usepackage\{multirow\} \\ \hline
+    合并一行多列 & \ttt multicolumn\{列的个数\}\{|c|\}\{内容\} \\ \hline
+    合并多行一列 & \ttt multirow\{行的个数\}*\{内容\} \\ \hline
+    \multirow{2}*{合并多行多列} & \ttt multicolumn\{列数\}\{|c|\}\{\ttt multirow\{行数\}*\{内容\} \\
+    ~ & \dots \ttt multicolumn\{列数\}\{|c|\}\{\~{}\}\} \\ \hline
+    特殊的横线 & \ttt cline\{开始-结束\} \\ \hline
+\end{centertabular}
+\subsection{图片}
+\begin{centertabular}{|c|c|}
+        \hline
+        添加图片根路径 & \ttt graphicspath\{\{路径一\},\{路径二\}\} \\ \hline
+        关于图片的包 & \ttt usepackage\{graphicx\}\\ \hline
+        插入图片 & \ttt includegraphics[属性]{图片路径} \\ \hline
+        缩放 & [scale = 倍数(0.5)] \\ \hline
+        硬高，硬宽 & [height = xcm,width = ycm] \\ \hline
+        图片高度，宽度 & \ttt textheight \ttt textwidth \\ \hline
+        旋转 & [angle = 角度(45)]\\ \hline
+\end{centertabular}
+\section{数学模式}
+\subsection{矩阵}
+\begin{centertabular}{|c|c|}
+    \hline   
+    矩阵环境(在数学模式下使用) & \ttt begin\{matrix\} \\ \hline
+    小括号，中括号，大括号 & \{pmatrix\},\{bmatrix\},\{Bmatrix\} \\ \hline
+    行列式，范数 & \{vmatrix\},\{Vmatrix\} \\ \hline
+    竖，横，斜省略号 & \ttt dots, \ttt ddots, \ttt vdots \\ \hline
+    小矩阵 & \ttt begin\{smallmatrix\} \\ \hline
+    括号 & \ttt left( \ttt right) \\ \hline
+    只有右括号 & \ttt left. \ttt right\} \\ \hline
+    array环境(在数学模式下使用) & \ttt begin\{array\}\{r|r\} \\ \hline
+\end{centertabular}
+
+\subsection{公式}
+\begin{centertabular}{|c|c|}
+    \hline
+    数学，符号宏包 & \ttt usepackage\{amsmath,amssymb\} \\ \hline
+    多行公式(编号) & \ttt begin\{gather\} \\ \hline
+    阻止编号 & \ttt notag \\ \hline
+    公式对齐(编号) & \ttt begin \{align\} \\ \hline
+    多等式(与align同时用) & \ttt begin \{equation\} \\ \hline
+    分段函数 & \ttt begin \{cases\} \\ \hline
+    一个公式多行 &  \ttt begin \{split\} \\ \hline
+\end{centertabular}
+
+\end{document}

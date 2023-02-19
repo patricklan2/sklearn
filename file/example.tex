@@ -1,0 +1,61 @@
+% 导言区
+\documentclass{ctexart}
+
+\usepackage{ctex}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multirow} % for cmd 'multirow', 'multicolumn'
+
+\newcommand{\ttt}{\textbackslash}
+
+\newenvironment{centertabular}[1]
+{\begin{center} \begin{tabular}{#1}}
+{\end{tabular} \end{center}}
+
+% 正文区
+\begin{document}
+
+
+\begin{centertabular}{|c|c|c|c|c|}
+    \hline
+    \multicolumn{5}{|c|}{学生个人信息} \\
+    \hline
+    \multirow{2}*{姓名} & 
+    \multirow{2}*{学号} & 
+    \multicolumn{3}{c|}{成绩} \\ \cline{3-5} 
+    \multicolumn{1}{|c|}{} &
+    \multicolumn{1}{|c|}{} & 
+    \multicolumn{1}{|c|}{语文} & 数学 & 英语 \\ \hline
+    张三 & 006 & 91 & 98 & 99 \\ \hline
+    李四 & 009 & 87 & 88 & 79 \\ \hline
+    王五 & 007 & 81 & 79 & 77 \\ \hline
+\end{centertabular}
+
+\begin{centertabular}{|l|l|r|}
+    \hline
+    \multicolumn{2}{|c|}{Input} & Output \\\hline
+    carry      & message  & $f_{carry}$(carry||message)  \\\hline
+    \multirow{4}{*}{0}  & $00$     & \multirow{4}{*}{0}\\ \cline{2-2}
+                        & $01$     & \\ \cline{2-2}
+                        & $10$     & \\ \cline{2-2}
+                        & $11$     & \\ \hline
+    \multirow{4}{*}{1}  & $00$     & \multirow{4}{*}{1}\\  \cline{2-2}
+                        & $01$     & \\ \cline{2-2}
+                        & $10$     & \\ \cline{2-2}
+                        & $11$     & \\ \hline
+\end{centertabular}
+
+
+\begin{table}
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\multicolumn{2}{|c|}{\multirow{2}*{合并两行两列}}  & 三 & 四 \\
+		\cline{3-4}
+		\multicolumn{2}{|c|}{~} & 3 & 4 \\
+		\hline
+	\end{tabular}
+\end{table}
+\end{document}
